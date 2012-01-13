@@ -18,20 +18,26 @@ titleframe=False
 
 \input{cc_beamer.tex}
 \begin{frame}
-    \title{Git-Workshop, Teil I}
-    \subtitle{Freitagsrunde TechTalks, TU Berlin}
-    \author{Julius Plenz}
-    \date{25. November 2011}
+    \title{Git-Workshop}
+    \subtitle{Fachschaft Informatik, HS Karlsuhe}
+    \author{Felix Bürkle}
+    \date{}
     \titlepage
     \begin{center}
     \begin{tabular}[t]{lr}
         \mbox{\CcGroupByNcSa{0.83}{0.95ex}}  &
         \parbox[b]{7cm}{
         {\tiny Veröffentlicht unter der CreativeCommons-Lizenz (By, Nc, Sa)}\\
-        {\tiny \url{http://wiki.freitagsrunde.org/TechTalks}}} \\
+	{\tiny Basierend auf Material von Julius Plenz \url{https://github.com/Feh/git-workshop}}} \\
     \end{tabular}
 \end{center}
 \end{frame}
+
+!==== Zu mir ====
+
+* 3. Semester (Bachelor)
+* selbst noch relativer Git-Neuling
+* habe eine ganze Weile Git benutzt ohne es wirklich zu verstehn
 
 !==== Bevor wir beginnen \ldots ====
 
@@ -66,7 +72,6 @@ Wer hat schonmal ...
 ** Verteiltes Git: Commits hoch- und runterladen
 ** Verschiedene Workflows
 ** Kollaboration live: Wir entwickeln gemeinsam ein Projekt
-** Oder: Wunschkonzert -- was euch interessiert
 
 * Teil I findet komplett ''lokal'' auf dem eigenen Rechner statt -- erst in Teil II nutzen wir die verteilten Eigenschaften von Git aus
 
@@ -115,7 +120,7 @@ Wer hat schonmal ...
 !==== Ein typischer Arbeitsablauf ====
 
 * Eine @''datei''@ verändern, und die Änderungen in das Repository »einchecken«:
-# @vim ''datei''@
+# @\$EDITOR ''datei''@
 # @git status@
 # @git add ''datei''@
 # @git commit -m '\emph{datei} angepasst'@

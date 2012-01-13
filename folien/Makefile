@@ -1,6 +1,6 @@
 default: pdf
 wiki2beamer: FORCE
-	./wiki2beamer git.wiki > git.tex
+	python2 ./wiki2beamer git.wiki > git.tex
 FORCE:
 dvi: wiki2beamer
 	latex git
