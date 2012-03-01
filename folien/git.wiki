@@ -28,12 +28,12 @@ titleframe=False
         \mbox{\CcGroupByNcSa{0.83}{0.95ex}}  &
         \parbox[b]{7cm}{
         {\tiny Veröffentlicht unter der CreativeCommons-Lizenz (By, Nc, Sa)}\\
-	{\tiny Basierend auf Material von Julius Plenz \url{https://github.com/Feh/git-workshop}}} \\
+	{\tiny Material mit kleinen Änderungen übernommen von Julius Plenz\\ \url{https://github.com/Feh/git-workshop}}} \\
     \end{tabular}
 \end{center}
 \end{frame}
 
-!==== Zu mir ====
+==== Zu mir ====
 
 * 3. Semester (Bachelor)
 * selbst noch relativer Git-Neuling
@@ -425,7 +425,7 @@ Fast-Forward Merge:
 !==== Hilfe, Konflikte! ====
 
 Bei einem @merge@ kann es zu Konflikten kommen. Wie geht man damit um?
-* @vim ''konfliktdateien''@
+* @\$EDITOR ''konfliktdateien''@
 * @git add ''konfliktdateien''@
 * @git commit -m "''Merge-Konflikt behoben''"@
 
@@ -509,18 +509,17 @@ julius@plenz.com
 % Titelslide Teil II
 
 !==== ====
-
-    \title{Git-Workshop, Teil II}
-    \subtitle{Freitagsrunde TechTalks, TU Berlin}
-    \author{Julius Plenz}
-    \date{2. Dezember 2011}
+    \title{Git-Workshop Teil II}
+    \subtitle{Fachschaft Informatik, HS Karlsuhe}
+    \author{Felix Bürkle}
+    \date{}
     \titlepage
     \begin{center}
     \begin{tabular}[t]{lr}
         \mbox{\CcGroupByNcSa{0.83}{0.95ex}}  &
         \parbox[b]{7cm}{
         {\tiny Veröffentlicht unter der CreativeCommons-Lizenz (By, Nc, Sa)}\\
-        {\tiny \url{http://wiki.freitagsrunde.org/TechTalks}}} \\
+	{\tiny Material mit kleinen Änderungen übernommen von Julius Plenz\\ \url{https://github.com/Feh/git-workshop}}} \\
     \end{tabular}
     \end{center}
 
@@ -670,7 +669,7 @@ Remote Repositories verwalten:
 ** Fragt bei allen Remote Repositories an, ob es neue Commits gibt. (Eigene Commits werden durch dieses Kommando '''nicht''' veröffentlicht!)
 
 Details der Repositories ändern (z.\,B. Vertipper):
-* @vim .git/config@
+* @\$EDITOR .git/config@
 
 Remote Branches auflisten:
 * @git branch -r@
@@ -731,13 +730,13 @@ Eigene Commits »pushen« oder per E-Mail senden:
 * Koordinatoren arbeiten dem Maintainer zu
 * Entwickler: Tauscht euch aus! (Remotes, Patches, \ldots{})
 
-==== Die Infrastruktur ====
+!==== Die Infrastruktur ====
 
 <[figure]
 <<<infrastruktur-crop.pdf, scale=0.6>>>
 [figure]>
 
-==== Wir tauschen uns aus ====
+!==== Wir tauschen uns aus ====
 
 * Remote ''blessed'' klonen (read-only):
 ** @git clone -o blessed git://git.plenz.com/git-tips@
@@ -753,7 +752,7 @@ Eigene Commits »pushen« oder per E-Mail senden:
 ** @git remote update@
 ** @gitk -{}-all@
 
-==== Kür: Was noch fehlt ====
+!==== Kür: Was noch fehlt ====
 
 * Rebase
 * @git stash@
@@ -773,5 +772,5 @@ Fragen und Feedback gerne per Mail:
 --.2cm--
 
 \begin{center}
-julius@plenz.com
+mail@nicidienase.de
 \end{center}
