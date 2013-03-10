@@ -1,17 +1,3 @@
-Beschreibung der Datein:
+Material für einen Git-Workshop
 
-abstract        - das kurz Paper
-ablauf          - beschreibt den Ablauf des Workshops
-folien          - die Folien für den Workshop
-live-demo       - Notizen für die jeweiligen live demos
-spickzettel     - die wichtigsten Kommandos auf einen Blick
-infrastruktur   - Beschreibung der 'Server' Infrastruktur für den zweiten Teil
-
-Übriggeblieben sind:
-
-PLNUNG          - Die Datei wurde benutzt um Ideen zu sammeln und das Konzept
-auszuarbeiten 
-git-workshop    - Valentins Ursprüngliche Notizen.
-
-
-
+Basiert zu großen Teile auf Material von Julius Plenz (https://github.com/Feh/git-workshop) und Valentin Haenel (https://github.com/esc/git-workshop)
