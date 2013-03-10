@@ -1,8 +1,12 @@
+*#
+*~
 *.aux
-*.dvi
+*.bbl
+*.blg
+*.div
 *.log
 *.nav
 *.out
 *.snm
 *.toc
-*.tex
+*.vrb
