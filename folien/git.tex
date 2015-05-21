@@ -8,20 +8,20 @@
 \usepackage{dirtree}
 \date{\today}
 \lstdefinestyle{basic}{
-    captionpos=t,%
-    basicstyle=\footnotesize\ttfamily,%
-    numberstyle=\tiny,%
-    numbers=left,%
-    stepnumber=1,%
-    frame=single,%
-    showspaces=false,%
-    showstringspaces=false,%
-    showtabs=false,%
-    %
-    keywordstyle=\color{blue},%
-    identifierstyle=,%
-    commentstyle=\color{gray},%
-    stringstyle=\color{magenta}%
+		captionpos=t,%
+		basicstyle=\footnotesize\ttfamily,%
+		numberstyle=\tiny,%
+		numbers=left,%
+		stepnumber=1,%
+		frame=single,%
+		showspaces=false,%
+		showstringspaces=false,%
+		showtabs=false,%
+		%
+		keywordstyle=\color{blue},%
+		identifierstyle=,%
+		commentstyle=\color{gray},%
+		stringstyle=\color{magenta}%
 }
 \usecolortheme{default}
 \setbeamertemplate{navigation symbols}{}
@@ -37,368 +37,353 @@
 
 \input{cc_beamer.tex}
 \begin{frame}
-    \title{Git-Workshop}
-    \subtitle{Fachschaft Informatik, HS Karlsuhe}
-    \author{Felix Bürkle}
-    \date{}
-    \titlepage
-    \begin{center}
-    \begin{tabular}[t]{lr}
-        \mbox{\CcGroupByNcSa{0.83}{0.95ex}}  &
-        \parbox[b]{7cm}{
-        {\tiny Veröffentlicht unter der CreativeCommons-Lizenz (By, Nc, Sa)}\\
-	{\tiny Material mit kleinen Änderungen übernommen von Julius Plenz\\ \url{https://github.com/Feh/git-workshop}}} \\
-    \end{tabular}
+		\title{Git-Workshop}
+		\subtitle{Fachschaft Informatik, HS Karlsuhe}
+		\author{Felix Bürkle}
+		\date{}
+		\titlepage
+		\begin{center}
+		\begin{tabular}[t]{lr}
+				\mbox{\CcGroupByNcSa{0.83}{0.95ex}}	&
+				\parbox[b]{7cm}{
+				{\tiny Veröffentlicht unter der CreativeCommons-Lizenz (By, Nc, Sa)}\\
+	{\tiny Basierend auf Material von Julius Plenz\\ \url{https://github.com/Feh/git-workshop}}} \\
+		\end{tabular}
 \end{center}
 \end{frame}
 
 \begin{frame}
  \frametitle{Bevor wir beginnen \ldots}
-  
+
 
 
 \begin{itemize}
-  \item Wer verwendet Linux? -- Windows? -- Mac?
-  \item Wer arbeitet gelegentlich auf der Shell?
-  \item Wer hat momentan noch \emph{kein} Git installiert?
+	\item Wer verwendet Linux? -- Windows? -- Mac?
+	\item Wer arbeitet gelegentlich auf der Shell?
+	\item Wer hat momentan noch \emph{kein} Git installiert?
 \end{itemize}
 
 \begin{itemize}
-  \item Wer kennt oder hat schon mal eines der folgenden Systeme benutzt?
+	\item Wer kennt oder hat schon mal eines der folgenden Systeme benutzt?
 \begin{itemize}
-  \item CVS/RCS
-  \item SVN
-  \item Mercurial, Darcs, Perforce, Bazaar
+	\item CVS/RCS
+	\item SVN
+	\item Mercurial, Darcs, Perforce, Bazaar
 \end{itemize}
 \end{itemize}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Wer kennt Git?}
-  
+
 
 
 Wer hat schonmal ...
 \begin{itemize}
-  \item \texttt{git} eingegeben
-  \item Ein Git-Repository selbst erstellt?
-  \item ... oder geklont?
-  \item Einen Commit gemacht?
-  \item Per Git mit anderen Leuten zusammengearbeitet?
+	\item \texttt{git} eingegeben
+	\item Ein Git-Repository selbst erstellt?
+	\item ... oder geklont?
+	\item Einen Commit gemacht?
+	\item Per Git mit anderen Leuten zusammengearbeitet?
 \end{itemize}
 
-  
+
  \end{frame}
 \begin{frame}
- \frametitle{Ablaufplan}
-  
+ \frametitle{Der Plan}
 
 
-\begin{itemize}
-  \item Teil I:
-\begin{itemize}
-  \item Grundlegende Arbeitsschritte in Git
-  \item Das Objektmodell -- eine theoretische Grundlage
-  \item Parallele Entwicklung: Branches und Merges
-  \item Entwicklung koordinieren: Ein Branching-Modell
-\end{itemize}
-\end{itemize}
 
 \begin{itemize}
-  \item Teil II:
-\begin{itemize}
-  \item Die Geschichte umschreiben: Rebase
-  \item Verteiltes Git: Commits hoch- und runterladen
-  \item Verschiedene Workflows
-  \item Kollaboration live: Wir entwickeln gemeinsam ein Projekt
-\end{itemize}
-\end{itemize}
-
-\begin{itemize}
-  \item Teil I findet komplett \emph{lokal} auf dem eigenen Rechner statt -- erst in Teil II nutzen wir die verteilten Eigenschaften von Git aus
+	\item Grundlegende Arbeitsschritte in Git
+	\item Das Objektmodell -- eine theoretische Grundlage
+	\item Parallele Entwicklung: Branches und Merges
+	\item Entwicklung koordinieren: Ein Branching-Modell
+	\item Die Geschichte umschreiben: Rebase
+	\item Verteiltes Git: Commits hoch- und runterladen
+	\item Verschiedene Workflows
 \end{itemize}
 
-  
  \end{frame}
 \begin{frame}
  \frametitle{Motivation: Warum Versionskontrolle?}
-  
+
 
 
 \begin{itemize}
-  \item \textbf{Sicherheit:} Versionskontrolle schützt vor Verlusten
-  \item \textbf{Dokumentation:} Wer hat wann was gemacht?
-  \item \textbf{Fokussierung:} Entwicklung logisch gliedern
-  \item \textbf{Kollaboration:} Mit anderen Leuten an den gleichen Dateien arbeiten
-  \item \textbf{Partizipation:} Jeder kann mitmachen (GitHub etc.)
+	\item \textbf{Sicherheit:} Versionskontrolle schützt vor Verlusten
+	\item \textbf{Dokumentation:} Wer hat wann was gemacht?
+	\item \textbf{Fokussierung:} Entwicklung logisch gliedern
+	\item \textbf{Kollaboration:} Mit anderen Leuten an den gleichen Dateien arbeiten
+	\item \textbf{Partizipation:} Jeder kann mitmachen (GitHub etc.)
 \end{itemize}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Interface}
-  
+
 
 
 \includegraphics[width=\textwidth]{bilder/shell-vs-gui.png}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Wer bin ich? -- Name und E-Mail einstellen}
-  
 
 
-\begin{itemize}
-  \item Für alle Projekte (wird in \texttt{\~{}/.gitconfig} gespeichert)
-\begin{itemize}
-  \item \texttt{git config -{}-global user.name "Max Mustermann"}
-  \item \texttt{git config -{}-global user.email max@mustermann.de}
-\end{itemize}
-\end{itemize}
 
 \begin{itemize}
-  \item ... oder alternativ nur für das aktuelle Projekt:
+	\item Für alle Projekte (wird in \texttt{\~{}/.gitconfig} gespeichert)
 \begin{itemize}
-  \item \texttt{git config user.email maintainer@cool-project.org}
+	\item \texttt{git config -{}-global user.name "Max Mustermann"}
+	\item \texttt{git config -{}-global user.email max@mustermann.de}
 \end{itemize}
 \end{itemize}
 
 \begin{itemize}
-  \item Außerdem, für die, die wollen: Farbe!
+	\item ... oder alternativ nur für das aktuelle Projekt:
 \begin{itemize}
-  \item \texttt{git config -{}-global color.ui auto}
+	\item \texttt{git config user.email maintainer@cool-project.org}
 \end{itemize}
 \end{itemize}
 
-  
+\begin{itemize}
+	\item Außerdem, für die, die wollen: Farbe!
+\begin{itemize}
+	\item \texttt{git config -{}-global color.ui auto}
+\end{itemize}
+\end{itemize}
+
+
  \end{frame}
 \begin{frame}
  \frametitle{Ein Projekt importieren oder erstellen}
 
 \begin{itemize}
-  \item Ein neues Projekt erstellt man wie folgt:
+	\item Ein neues Projekt erstellt man wie folgt:
 \begin{itemize}
-  \item \texttt{mkdir \emph{projekt}}
-  \item \texttt{cd \emph{projekt}}
-  \item \texttt{git init}
+	\item \texttt{mkdir \emph{projekt}}
+	\item \texttt{cd \emph{projekt}}
+	\item \texttt{git init}
 \end{itemize}
 \end{itemize}
 
 \begin{itemize}
-  \item Um ein bestehendes Projekt zu importieren, »klont« man es mit seiner gesamten Versionsgeschichte:
+	\item Um ein bestehendes Projekt zu importieren, »klont« man es mit seiner gesamten Versionsgeschichte:
 \begin{itemize}
-  \item \texttt{git clone git@github.com:NiciDieNase/git-workshop.git}
+	\item \texttt{git clone git@github.com:fsi-hska/git-workshop.git}
 \end{itemize}
 \end{itemize}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Begriffsbildung}
-  
+
 
 
 \begin{itemize}
-  \item \textbf{Index}/\textbf{Staging Area}: Bereich zwischen dem Arbeitsverzeichnis und dem Repository, in die Änderungen für den nächsten \textbf{Commit} gesammelt werden
-  \item \textbf{Commit}: Eine Änderung an einer oder mehrerer Dateien, versehen mit Metadaten wie Autor, Datum und Beschreibung
-  \item \textbf{Repository}: Eine Datenbank für Commits, dort wird die Versionsgeschichte aufgezeichnet
-  \item \textbf{Referenz}: Jeder \textbf{Commit} wird durch eine eindeutige SHA1-Summe identifiziert. Eine Referenz »zeigt« auf einen bestimmten Commit
-  \item \textbf{Branch}: Ein »Zweig«, eine Abzweigung im Entwicklungszyklus, z.\,B. um ein neues Feature einzuführen.
+	\item \textbf{Index}/\textbf{Staging Area}: Bereich zwischen dem Arbeitsverzeichnis und dem Repository, in die Änderungen für den nächsten \textbf{Commit} gesammelt werden
+	\item \textbf{Commit}: Eine Änderung an einer oder mehrerer Dateien, versehen mit Metadaten wie Autor, Datum und Beschreibung
+	\item \textbf{Repository}: Eine Datenbank für Commits, dort wird die Versionsgeschichte aufgezeichnet
+	\item \textbf{Referenz}: Jeder \textbf{Commit} wird durch eine eindeutige SHA1-Summe identifiziert. Eine Referenz »zeigt« auf einen bestimmten Commit
+	\item \textbf{Branch}: Ein »Zweig«, eine Abzweigung im Entwicklungszyklus, z.\,B. um ein neues Feature einzuführen.
 \end{itemize}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Ein typischer Arbeitsablauf}
-  
+
 
 
 \begin{itemize}
-  \item Eine \texttt{\emph{datei}} verändern, und die Änderungen in das Repository »einchecken«:
+	\item Eine \texttt{\emph{datei}} verändern, und die Änderungen in das Repository »einchecken«:
 \end{itemize}
 \begin{enumerate}
-  \item \texttt{\$EDITOR \emph{datei}}
-  \item \texttt{git status}
-  \item \texttt{git add \emph{datei}}
-  \item \texttt{git commit -m '\emph{datei} angepasst'}
-  \item \texttt{git show}
+	\item \texttt{\$EDITOR \emph{datei}}
+	\item \texttt{git status}
+	\item \texttt{git add \emph{datei}}
+	\item \texttt{git commit -m '\emph{datei} angepasst'}
+	\item \texttt{git show}
 \end{enumerate}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Index / Staging Area}
-  
+
 
 
 \begin{itemize}
-  \item Im \emph{Index} bzw. der \emph{Staging-Area} werden Veränderungen für den nächsten Commit vorgemerkt
-  \item So kann der Inhalt von einem Commit schrittweise aus einzelnen Veränderungen zusammengestellt werden
+	\item Im \emph{Index} bzw. der \emph{Staging-Area} werden Veränderungen für den nächsten Commit vorgemerkt
+	\item So kann der Inhalt von einem Commit schrittweise aus einzelnen Veränderungen zusammengestellt werden
 \end{itemize}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Ausgangsstellung}
-  
+
 
 
 \begin{itemize}
-  \item Alle auf dem gleichen Stand
+	\item Alle auf dem gleichen Stand
 \end{itemize}
 
 \begin{center}
 \includegraphics[ scale=0.25]{bilder/index-stage1.pdf}
 \end{center}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Veränderungen machen}
-  
+
 
 
 \begin{itemize}
-  \item Veränderungen werden im Working-Tree gemacht
+	\item Veränderungen werden im Working-Tree gemacht
 \end{itemize}
 
 \begin{center}
 \includegraphics[ scale=0.25]{bilder/index-stage2.pdf}
 \end{center}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Dem Index hinzufügen -- \texttt{git add}}
-  
+
 
 
 \begin{itemize}
-  \item Die Veränderungen im Working-Tree $\rightarrow$ Index
+	\item Die Veränderungen im Working-Tree $\rightarrow$ Index
 \end{itemize}
 
 \begin{center}
 \includegraphics[ scale=0.25]{bilder/index-stage3.pdf}
 \end{center}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Einen Commit erzeugen -- \texttt{git commit}}
-  
+
 
 
 \begin{itemize}
-  \item Alle Veränderungen im Index $\rightarrow$ Commit
+	\item Alle Veränderungen im Index $\rightarrow$ Commit
 \end{itemize}
 
 \begin{center}
 \includegraphics[ scale=0.25]{bilder/index-stage4.pdf}
 \end{center}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Resultat}
-  
+
 
 
 \begin{itemize}
-  \item Alle wieder  auf dem gleichen Stand
+	\item Alle wieder	auf dem gleichen Stand
 \end{itemize}
 
 \begin{center}
 \includegraphics[ scale=0.25]{bilder/index-stage5.pdf}
 \end{center}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Referenzen und ignorierte Dateien}
-  
+
 
 
 Relative Referenzen:
 \begin{itemize}
-  \item \texttt{HEAD}: Der letzte Commit (wird per \texttt{git show} angezeigt)
-  \item \texttt{HEAD$^\mathbf{\wedge}$}: Der vorletzte Commit
-  \item \texttt{HEAD\textasciitilde{}\emph{N}}: Der \emph{N}.-letzte Commit
+	\item \texttt{HEAD}: Der letzte Commit (wird per \texttt{git show} angezeigt)
+	\item \texttt{HEAD$^\mathbf{\wedge}$}: Der vorletzte Commit
+	\item \texttt{HEAD\textasciitilde{}\emph{N}}: Der \emph{N}.-letzte Commit
 \end{itemize}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Informationen über das Repository erhalten}
-  
 
 
-\begin{itemize}
-  \item Den jüngsten Commit im vollen Umfang anschauen:
-\begin{itemize}
-  \item \texttt{git show}
-\end{itemize}
-\end{itemize}
 
 \begin{itemize}
-  \item Die gesamte Versionsgeschichte, die zum aktuellen Zustand führt, anzeigen:
+	\item Den jüngsten Commit im vollen Umfang anschauen:
 \begin{itemize}
-  \item \texttt{git log}
+	\item \texttt{git show}
 \end{itemize}
 \end{itemize}
 
 \begin{itemize}
-  \item Was hat sich verändert?
+	\item Die gesamte Versionsgeschichte, die zum aktuellen Zustand führt, anzeigen:
 \begin{itemize}
-  \item \texttt{git diff}
+	\item \texttt{git log}
 \end{itemize}
 \end{itemize}
 
 \begin{itemize}
-  \item Das Repository visualisieren:
+	\item Was hat sich verändert?
 \begin{itemize}
-  \item \texttt{gitk}
-  \item \texttt{gitg}
-\end{itemize}
-  \item ... oder textbasiert:
-\begin{itemize}
-  \item \texttt{tig}
+	\item \texttt{git diff}
 \end{itemize}
 \end{itemize}
 
-  
+\begin{itemize}
+	\item Das Repository visualisieren:
+\begin{itemize}
+	\item \texttt{gitk}
+	\item \texttt{gitg}
+\end{itemize}
+	\item ... oder textbasiert:
+\begin{itemize}
+	\item \texttt{tig}
+\end{itemize}
+\end{itemize}
+
+
  \end{frame}
 \begin{frame}
  \frametitle{Änderungen rückgängig machen}
-  
+
 
 
 Einen neuen Commit erstellen, der eine alte Änderung rückgängig macht:
 \begin{itemize}
-  \item \texttt{git revert \emph{commit}}
+	\item \texttt{git revert \emph{commit}}
 \end{itemize}
 
 Den Index zurücksetzen:
 \begin{itemize}
-  \item \texttt{git reset HEAD}
+	\item \texttt{git reset HEAD}
 \end{itemize}
 
 Den Zustand von vor zwei Commits wiederherstellen:
 \begin{itemize}
-  \item \texttt{git checkout HEAD\textasciitilde{}2}
+	\item \texttt{git checkout HEAD\textasciitilde{}2}
 \end{itemize}
 
 Die letzten zwei Commits \textcolor{red}{\textbf{unwiederbringlich}} löschen:
 \begin{itemize}
-  \item \texttt{git reset -{}-hard HEAD\textasciitilde{}2}
+	\item \texttt{git reset -{}-hard HEAD\textasciitilde{}2}
 \end{itemize}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Branches: Abzweigungen}
-  
+
 
 
 Wir arbeiten schon die ganze Zeit im \texttt{master}-Branch!
@@ -414,11 +399,11 @@ obersten Commit einer Versionsgeschichte.
 
 Branches ...
 \begin{itemize}
-  \item erstellen: \texttt{git branch \emph{name}}
-  \item auschecken: \texttt{git checkout \emph{name}}
-  \item erstellen und direkt auschecken: \texttt{git checkout -b \emph{name}}
-  \item auflisten: \texttt{git branch -v}
-  \item löschen: \texttt{git branch -d \emph{name}}
+	\item erstellen: \texttt{git branch \emph{name}}
+	\item auschecken: \texttt{git checkout \emph{name}}
+	\item erstellen und direkt auschecken: \texttt{git checkout -b \emph{name}}
+	\item auflisten: \texttt{git branch -v}
+	\item löschen: \texttt{git branch -d \emph{name}}
 \end{itemize}
 
 
@@ -426,31 +411,31 @@ Branches ...
 
 Idealisierter Workflow: Ein Branch pro neuem Feature oder Bugfix.
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Beispiel: Zwei Branches}
-  
+
 
 
 Zwei Branches erstellen, und auf jedem einen Commit machen. Dann das
 Resultat in \texttt{gitk} anschauen.
 
 \begin{itemize}
-  \item \texttt{git branch eins}
-  \item \texttt{git checkout eins}
-  \item Commit machen
-  \item \texttt{git checkout master}
-  \item \texttt{git checkout -b zwei}
-  \item Commit machen
-  \item \texttt{gitk -{}-all}
+	\item \texttt{git branch eins}
+	\item \texttt{git checkout eins}
+	\item Commit machen
+	\item \texttt{git checkout master}
+	\item \texttt{git checkout -b zwei}
+	\item Commit machen
+	\item \texttt{gitk -{}-all}
 \end{itemize}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Beispielprojekt: Was wollen wir speichern}
-  
+
 
 
 Angenommen, wir wollen folgendes Verzeichnis speichern:
@@ -466,21 +451,21 @@ Angenommen, wir wollen folgendes Verzeichnis speichern:
 .3 test.sh.
 }
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Objektmodell}
-  
+
 
 
 \begin{itemize}
-  \item \emph{Blob}: Enthält den Inhalt einer Datei
-  \item \emph{Tree}: Eine Sammlung von Tree- und Blob-Objekten
-  \item \emph{Commit}: Besteht aus einer Referenz auf einen Tree mit zusätzlichen Informationen
+	\item \emph{Blob}: Enthält den Inhalt einer Datei
+	\item \emph{Tree}: Eine Sammlung von Tree- und Blob-Objekten
+	\item \emph{Commit}: Besteht aus einer Referenz auf einen Tree mit zusätzlichen Informationen
 \begin{itemize}
-  \item \emph{Author} und \emph{Commiter}
-  \item \emph{Parents}
-  \item \emph{Commit-Message}
+	\item \emph{Author} und \emph{Commiter}
+	\item \emph{Parents}
+	\item \emph{Commit-Message}
 \end{itemize}
 \end{itemize}
 
@@ -488,61 +473,61 @@ Angenommen, wir wollen folgendes Verzeichnis speichern:
 \includegraphics[ scale=0.6]{bilder/objekte.pdf}
 \end{figure}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{SHA-1 IDs}
-  
+
 
 
 \begin{itemize}
-  \item Objekte werden mit \emph{SHA-1 IDs} identifiziert
-  \item Dies ist der \emph{Objekt-Name}
-  \item Wird aus dem Inhalt berechnet
-  \item \emph{SHA-1} ist eine sogenannte Hash-Funktion; sie liefert für eine Bit-Sequenz mit der maximalen Länge von $2^{64}-1$ Bit ($\approx$2 Exbibyte) in eine Hexadezimal-Zahl der Länge 40 (d.\,h.\ 160 Bits)
-  \item Die resultierende Zahl ist eine von $2^{160} (\approx 1.5\cdot 10^{49})$ möglichen Zahlen und ziemlich einzigartig
+	\item Objekte werden mit \emph{SHA-1 IDs} identifiziert
+	\item Dies ist der \emph{Objekt-Name}
+	\item Wird aus dem Inhalt berechnet
+	\item \emph{SHA-1} ist eine sogenannte Hash-Funktion; sie liefert für eine Bit-Sequenz mit der maximalen Länge von $2^{64}-1$ Bit ($\approx$2 Exbibyte) in eine Hexadezimal-Zahl der Länge 40 (d.\,h.\ 160 Bits)
+	\item Die resultierende Zahl ist eine von $2^{160} (\approx 1.5\cdot 10^{49})$ möglichen Zahlen und ziemlich einzigartig
 \end{itemize}
 
 \begin{figure}[htp]
-    \includegraphics[ scale=0.6]{bilder/sha.pdf}
+		\includegraphics[ scale=0.6]{bilder/sha.pdf}
 \end{figure}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Objektverwaltung}
-  
+
 
 
 \begin{itemize}
-  \item Alle Objekte werden von Git in der \emph{Objektdatenbank} (genannt Repository) gespeichert
-  \item Die Objekte sind durch ihre SHA-1 ID eindeutig adressierbar
+	\item Alle Objekte werden von Git in der \emph{Objektdatenbank} (genannt Repository) gespeichert
+	\item Die Objekte sind durch ihre SHA-1 ID eindeutig adressierbar
 \end{itemize}
 
 \begin{itemize}
-  \item Für jede Datei erzeugt Git ein Blob-Objekt
-  \item Für jedes Verzeichnis erzeugt Git ein Tree-Objekt
-  \item Ein Tree-Objekt enthält die Referenzen (SHA1 IDs) auf die in dem Verzeichnis enthaltenen Dateien
+	\item Für jede Datei erzeugt Git ein Blob-Objekt
+	\item Für jedes Verzeichnis erzeugt Git ein Tree-Objekt
+	\item Ein Tree-Objekt enthält die Referenzen (SHA1 IDs) auf die in dem Verzeichnis enthaltenen Dateien
 \end{itemize}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Zusammenfassung}
-  
+
 
 
 Ein Git-Repository enthält Commits; diese wiederum referenzieren Trees und Blobs, sowie ihren direkten Vorgänger
 
 \begin{figure}[ht]
-    \includegraphics[ scale=0.6]{bilder/objekte-zusammenhang.pdf}
+		\includegraphics[ scale=0.6]{bilder/objekte-zusammenhang.pdf}
 \end{figure}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Commit Graph}
-  
+
 
 
 Ein Repository ist ein \emph{Gerichteter Azyklischer Graph}\\
@@ -552,11 +537,11 @@ Engl.: Directed Acyclic Graph (DAG)
 \includegraphics[ scale=0.14]{bilder/graph.pdf}
 \end{center}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Branches und Tags}
-  
+
 
 
 Branches und Tags sind Zeiger auf Knoten in dem Graphen.\\
@@ -566,35 +551,35 @@ Branches und Tags sind Zeiger auf Knoten in dem Graphen.\\
 \includegraphics[ scale=0.14]{bilder/graph-mit-refs.pdf}
 \end{center}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Graph-Struktur}
-  
+
 
 
 \begin{itemize}
-  \item Die gerichtete Graph-Struktur entsteht, da in jedem Commit Referenzen auf direkte Vorfahren gespeichert sind
+	\item Die gerichtete Graph-Struktur entsteht, da in jedem Commit Referenzen auf direkte Vorfahren gespeichert sind
 \end{itemize}
 
 \begin{itemize}
-  \item Integrität kryptographisch gesichert
+	\item Integrität kryptographisch gesichert
 \end{itemize}
 
 \begin{itemize}
-  \item Git-Kommandos manipulieren die Graph-Struktur
+	\item Git-Kommandos manipulieren die Graph-Struktur
 \end{itemize}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Merging: Branches Zusammenfügen}
-  
+
 
 
 Simple Merge:
 \begin{itemize}
-  \item \texttt{git merge \emph{neues-feature}}
+	\item \texttt{git merge \emph{neues-feature}}
 \end{itemize}
 
 
@@ -603,14 +588,14 @@ Simple Merge:
 
 Fast-Forward Merge:
 \begin{itemize}
-  \item Wird \texttt{\emph{topic}} in \texttt{\emph{master}} gemerget und \texttt{\emph{topic}} basiert auf \texttt{\emph{master}}, dann wird kein Merge-Commit erstellt, sondern nur der Zeiger »weitergerückt« bzw. »vorgespult«.
+	\item Wird \texttt{\emph{topic}} in \texttt{\emph{master}} gemerget und \texttt{\emph{topic}} basiert auf \texttt{\emph{master}}, dann wird kein Merge-Commit erstellt, sondern nur der Zeiger »weitergerückt« bzw. »vorgespult«.
 \end{itemize}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Vor dem Merge}
-  
+
 
 
 \begin{center}
@@ -618,14 +603,14 @@ Fast-Forward Merge:
 \end{center}
 
 \begin{itemize}
-  \item \texttt{topic} ist fertig und soll in \texttt{master} integriert werden
+	\item \texttt{topic} ist fertig und soll in \texttt{master} integriert werden
 \end{itemize}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Nach dem Merge}
-  
+
 
 
 \begin{center}
@@ -633,14 +618,14 @@ Fast-Forward Merge:
 \end{center}
 
 \begin{itemize}
-  \item Im \texttt{master} ausführen: \texttt{git merge topic}
+	\item Im \texttt{master} ausführen: \texttt{git merge topic}
 \end{itemize}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Vor dem Fast-Forward}
-  
+
 
 
 \begin{center}
@@ -648,14 +633,14 @@ Fast-Forward Merge:
 \end{center}
 
 \begin{itemize}
-  \item In \texttt{master} hat sich nichts getan, \texttt{topic} ist fertig
+	\item In \texttt{master} hat sich nichts getan, \texttt{topic} ist fertig
 \end{itemize}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Nach dem Fast-Forward}
-  
+
 
 
 \begin{center}
@@ -663,21 +648,21 @@ Fast-Forward Merge:
 \end{center}
 
 \begin{itemize}
-  \item \texttt{master} wird »weitergerückt«, bzw. »vorgespult«
+	\item \texttt{master} wird »weitergerückt«, bzw. »vorgespult«
 \end{itemize}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Hilfe, Konflikte!}
-  
+
 
 
 Bei einem \texttt{merge} kann es zu Konflikten kommen. Wie geht man damit um?
 \begin{itemize}
-  \item \texttt{\$EDITOR \emph{konfliktdateien}}
-  \item \texttt{git add \emph{konfliktdateien}}
-  \item \texttt{git commit -m "\emph{Merge-Konflikt behoben}"}
+	\item \texttt{\$EDITOR \emph{konfliktdateien}}
+	\item \texttt{git add \emph{konfliktdateien}}
+	\item \texttt{git commit -m "\emph{Merge-Konflikt behoben}"}
 \end{itemize}
 
 
@@ -685,212 +670,37 @@ Bei einem \texttt{merge} kann es zu Konflikten kommen. Wie geht man damit um?
 
 Das Unterfangen abbrechen:
 \begin{itemize}
-  \item \texttt{git reset -{}-hard HEAD}
+	\item \texttt{git reset -{}-hard HEAD}
 \end{itemize}
 
-  
+
  \end{frame}
-\begin{frame}
- \frametitle{Branch-Modell}
-  
 
-
-\begin{itemize}
-  \item Dieses Modell wird in vielen OS-Projekten verwendet
-  \item Es gibt vier Haupt-Branches:
-\begin{itemize}
-  \item \texttt{maint}: Maintenance (Security und Bugfixes)
-  \item \texttt{master}: Vorbereitung des neuen Releases
-  \item \texttt{next}: Neue Features werden auf Stabilität getestet (Beta)
-  \item \texttt{pu}: \emph{proposed updates}, unfertige, experimentelle Features
-\end{itemize}
-  \item \texttt{next} und \texttt{pu} werden möglicherweise verändert (neu aufgebaut, etc.)
-  \item Bugfixes werden von \texttt{maint} in \texttt{master} übernommen
-  \item Topic-Branches werden bei Vollendung in \texttt{next} übernommen
-  \item Wird \texttt{next} stabil, wandern die Änderungen in den \texttt{master}
-\end{itemize}
-
-  
- \end{frame}
-\begin{frame}
- \frametitle{Branch-Modell -- Visualisiert}
-  
-
-
-\begin{center}
-\includegraphics[ scale=0.17]{bilder/branch-model.pdf}
-\end{center}
-
-  
- \end{frame}
-\begin{frame}
- \frametitle{Ressourcen: Bücher}
-  
-
-
-\begin{columns}
-\column{ 2.5cm }
-\includegraphics[width=\textwidth]{bilder/progit.png}
-\column{ 7cm }
-\begin{itemize}
-  \item \textbf{Pro Git} von Scott Chacon, APress, 2009
-  \item Kostenlos online verfügbar unter \url{http://progit.org/book/}
-\end{itemize}
-\end{columns}
-
-
-\vspace{.5cm}
-
-
-\begin{columns}
-\column{ 2.5cm }
-\includegraphics[width=\textwidth]{bilder/gitbuch.png}
-\column{ 7cm }
-
-\begin{itemize}
-  \item \textbf{Git. Verteilte Versionskontrolle für Code und Dokumente}, Open Source Press, 2011
-  \item \url{http://gitbu.ch/}
-\end{itemize}
-
-\end{columns}
-
-  
- \end{frame}
-\begin{frame}
- \frametitle{Ressourcen: Webseiten}
-  
-
-
-\begin{itemize}
-  \item Webseite von Git: \url{http://git-scm.com/}
-  \item Schnelle Übersicht: \url{http://gitref.org/}
-  \item Tipps und Tricks: \url{http://gitready.com/}
-  \item Hilfe bei Fragen: \url{http://stackoverflow.com/}
-  \item Kostenlose Git-Repos: \url{http://github.com/}
-\end{itemize}
-
-  
- \end{frame}
-\begin{frame}
- \frametitle{Vorbereitung Für Teil II}
-  
-
-
-\begin{enumerate}
-  \item Experimentiere mit den gelernten Kommandos
-  \item Verursache und löse einen Merge-Konflikt
-  \item Schau Dir den Google TechTalk von Linus Torvalds zum Thema Git an (von 2007)
-  \item Informiere dich, wie ein OSS-Projekt deiner Wahl Git verwendet
-\end{enumerate}
-
-\begin{itemize}
-  \item Und: Erstelle Dir einen Account bei GitHub o.\,Ä. -- nächstes Mal werden wir das brauchen!
-  %\item Bei Fragen und Wünschen: E-Mail schreiben!
-\end{itemize}
-
-  
- \end{frame}
-\begin{frame}
- \frametitle{Danke!}
-  
-
-
-%Vielen Dank für eure Teilnahme!
-
-
-\vspace{0.5cm}
-\begin{center}
-
-Bis zum 2. Teil!
-%Fragen und Feedback gerne per Mail:
-
-
-\vspace{.2cm}
-
-
-\end{center}
-
-% Titelslide Teil II
-  
-\end{frame}
-
-\begin{frame}
- \frametitle{}
-  
-
-    \title{Git-Workshop Teil II}
-    \subtitle{Fachschaft Informatik, HS Karlsuhe}
-    \author{Felix Bürkle}
-    \date{}
-    \titlepage
-    \begin{center}
-    \begin{tabular}[t]{lr}
-        \mbox{\CcGroupByNcSa{0.83}{0.95ex}}  &
-        \parbox[b]{7cm}{
-        {\tiny Veröffentlicht unter der CreativeCommons-Lizenz (By, Nc, Sa)}\\
-	{\tiny Material mit kleinen Änderungen übernommen von Julius Plenz\\ \url{https://github.com/Feh/git-workshop}}} \\
-    \end{tabular}
-    \end{center}
-
-  
- \end{frame}
-\begin{frame}
- \frametitle{Ablaufplan}
-  
-
-
-\begin{itemize}
-  \item Teil I:
-\begin{itemize}
-  \item Grundlegende Arbeitsschritte in Git
-  \item Das Objektmodell -- eine theoretische Grundlage
-  \item Parallele Entwicklung: Branches und Merges
-  \item Entwicklung koordinieren: Ein Branching-Modell
-\end{itemize}
-\end{itemize}
-
-\begin{itemize}
-  \item Teil II:
-\begin{itemize}
-  \item Die Geschichte umschreiben: Rebase
-  \item Einschub: Wunschkonzert -- was euch interessiert
-  \item Verteiltes Git: Commits hoch- und runterladen
-  \item Verschiedene Workflows
-  \item Kollaboration live: Wir entwickeln gemeinsam ein Projekt
-\end{itemize}
-\end{itemize}
-
-\begin{itemize}
-  \item Teil I findet komplett \emph{lokal} auf dem eigenen Rechner statt -- erst in Teil II nutzen wir die verteilten Eigenschaften von Git aus
-\end{itemize}
-
-  
- \end{frame}
 \begin{frame}
  \frametitle{Einen Commit ändern}
-  
+
 
 
 \begin{itemize}
-  \item Commit ändern = Neuen Commit erstellen, alten wegschmeißen
-  \item Den letzten Commit (\texttt{HEAD}) ändern:
+	\item Commit ändern = Neuen Commit erstellen, alten wegschmeißen
+	\item Den letzten Commit (\texttt{HEAD}) ändern:
 \end{itemize}
 
 \begin{enumerate}
-  \item \texttt{\$EDITOR \emph{datei}}
-  \item \texttt{git add \emph{datei}}
-  \item \texttt{git commit -{}-amend}
+	\item \texttt{\$EDITOR \emph{datei}}
+	\item \texttt{git add \emph{datei}}
+	\item \texttt{git commit -{}-amend}
 \end{enumerate}
 
 \begin{itemize}
-  \item Tiefer liegende Commits (\texttt{HEAD\textasciitilde{}1} etc.) können so nicht geändert werden!
+	\item Tiefer liegende Commits (\texttt{HEAD\textasciitilde{}1} etc.) können so nicht geändert werden!
 \end{itemize}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Vor dem Rebase}
-  
+
 
 
 \begin{center}
@@ -898,14 +708,14 @@ Bis zum 2. Teil!
 \end{center}
 
 \begin{itemize}
-  \item \texttt{\emph{topic}} soll auf der neusten Version von \texttt{master} basieren
+	\item \texttt{\emph{topic}} soll auf der neusten Version von \texttt{master} basieren
 \end{itemize}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Nach dem Rebase}
-  
+
 
 
 \begin{center}
@@ -913,18 +723,18 @@ Bis zum 2. Teil!
 \end{center}
 
 \begin{itemize}
-  \item \texttt{git rebase master \emph{topic}}
+	\item \texttt{git rebase master \emph{topic}}
 \end{itemize}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Rebase: Auf eine neue Basis bauen}
-  
+
 
 
 \begin{itemize}
-  \item \textbf{Rebase}: Einen Branch auf eine »neue Basis« stellen.
+	\item \textbf{Rebase}: Einen Branch auf eine »neue Basis« stellen.
 \end{itemize}
 \begin{block}{\texttt{master} als neue Basis für \texttt{\emph{topic}}}
 \texttt{git checkout \emph{topic}} \\
@@ -935,209 +745,137 @@ Bis zum 2. Teil!
 \texttt{git rebase master \emph{topic}}
 \end{block}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Rebasing: eine Warnung}
-  
+
 
 
 \begin{itemize}
-  \item \textcolor{red}{\textbf{Wichtig:}} Man darf \textbf{\emph{niemals}} Commits aus einem bereits veröffentlichten Branch -- auf dem also womöglich Andere ihre Arbeit basieren -- durch \texttt{git rebase} verändern!
-  \item \textbf{Daher: Nur Unveröffentlichtes gegen Veröffentlichtes rebasen:}
+	\item \textcolor{red}{\textbf{Wichtig:}} Man darf \textbf{\emph{niemals}} Commits aus einem bereits veröffentlichten Branch -- auf dem also womöglich Andere ihre Arbeit basieren -- durch \texttt{git rebase} verändern!
+	\item \textbf{Daher: Nur Unveröffentlichtes gegen Veröffentlichtes rebasen:}
 \begin{itemize}
-  \item \texttt{git rebase origin/master}
-  \item \texttt{git rebase v1.1.23}
+	\item \texttt{git rebase origin/master}
+	\item \texttt{git rebase v1.1.23}
 \end{itemize}
 \end{itemize}
 
-  
+
  \end{frame}
-\begin{frame}
- \frametitle{Rebase Interaktiv}
-  
 
-
-\begin{itemize}
-  \item Das ist \emph{Advanced Git Magic} -- und will geübt sein!
-  \item Rebase-Prozess anhalten, Commits »mittendrin« ändern, weiterlaufen lassen
-\end{itemize}
-
-\begin{block}{Interaktives Rebase}
-\texttt{git rebase -i master \emph{topic}}
-\end{block}
-
-\begin{itemize}
-  \item Anwendungsfälle \emph{nur} lokal und für die \emph{eigenen} Commits
-\begin{itemize}
-  \item Patch-Serie neu strukturieren
-  \item Typos aus den eigenen Commits entfernen
-  \item Offensichtliche Fehler glattbügeln
-\end{itemize}
-\end{itemize}
-
-  
- \end{frame}
-\begin{frame}
- \frametitle{Rebase Interaktiv: Beispiele}
-  
-
-
-\begin{block}{Zwei Commits zusammenfassen}
-\texttt{git rebase -i HEAD\textasciitilde{}\emph{n}}\\
-$\rightarrow$ \texttt{pick} des zweiten Commits durch \texttt{fixup} ersetzen
-\end{block}
-
-\begin{itemize}
-  \item Einen Commit verschieben: Die Zeilen vertauschen
-  \item Einen Commit editieren: mit \texttt{edit} markieren
-  \item Einen Commit aufteilen: Siehe Cheatsheet
-\end{itemize}
-
-  
- \end{frame}
-\begin{frame}
- \frametitle{Whitespace und EOL}
-  
-
-
-\begin{itemize}
-  \item Was ist kaputter Whitespace?
-  \item \texttt{git diff -{}-check} (z.\,B. $\rightarrow$ Hook)
-\end{itemize}
-
-\begin{itemize}
-  \item \emph{Zeilenende:} Windows (CRLF) vs. UNIX (LF)
-  \item \texttt{core.eol} bestimmt, was zu tun ist: \texttt{lf}, \texttt{crlf} oder \texttt{native}
-  \item Git-Attribut \texttt{text} für Dateien, die automatisch konvertiert werden sollen
-\begin{itemize}
-  \item \texttt{echo '*.c text' > .gitattributes}
-\end{itemize}
-  \item \texttt{core.safecrlf}: Konvertierung verbieten, wenn ein Mix aus CRLF und LF vorhanden ist
-  \item Mehr Infos: \texttt{gitattributes(5)}
-\end{itemize}
-
-  
- \end{frame}
 \begin{frame}
  \frametitle{Hinaus in die weite Welt!}
-  
-
-
 \begin{itemize}
-  \item Wir wollen unsere Arbeit mit der anderer Entwickler austauschen!
-  \item Durch die verteilte Architektur von \texttt{git} braucht es keinen \emph{zentralen} Server zu geben.
-  \item Das Entwicklerteam muss sich auf einen \emph{Workflow} einigen:
-\begin{itemize}
-  \item Shared Repository
-  \item Maintainer/Blessed Repository
-  \item Patch-Queue per E-Mail
-  \item ... oder auch alles durcheinandergemixt.
+	\item Wir wollen unsere Arbeit mit der anderer Entwickler austauschen!
+	\item Durch die verteilte Architektur von \texttt{git} braucht es keinen \emph{zentralen} Server zu geben.
+	\item Das Entwicklerteam muss sich auf einen \emph{Workflow} einigen:
+	\begin{itemize}
+		\item Shared Repository
+		\item Maintainer/Blessed Repository
+		\item Patch-Queue per E-Mail
+		\item ... oder auch alles durcheinandergemixt.
+	\end{itemize}
 \end{itemize}
-\end{itemize}
-
-  
  \end{frame}
+
 \begin{frame}
  \frametitle{Zentralisiert}
-  
-
-
 \begin{figure}[ht]
-    \includegraphics[ scale=0.35]{bilder/centralised.pdf}
+		\includegraphics[ scale=0.35]{bilder/centralised.pdf}
 \end{figure}
 
 \begin{itemize}
-  \item Ein einziges zentrales Repository
-  \item Alle Entwickler haben Schreibzugriff
+	\item Ein einziges zentrales Repository
+	\item Alle Entwickler haben Schreibzugriff
 \end{itemize}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Öffentliche Entwickler-Repositories}
-  
+
 
 
 \begin{figure}[ht]
-    \includegraphics[ scale=0.35]{bilder/developer-public.pdf}
+		\includegraphics[ scale=0.35]{bilder/developer-public.pdf}
 \end{figure}
 
 \begin{itemize}
-  \item Ein öffentliches Repository pro Entwickler
-  \item Der Projektleiter integriert Verbesserungen
+	\item Ein öffentliches Repository pro Entwickler
+	\item Der Projektleiter integriert Verbesserungen
 \end{itemize}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Patch-Queue per Email}
-  
+
 
 
 \begin{figure}[ht]
-    \includegraphics[ scale=0.32]{bilder/patches-per-mail.pdf}
+		\includegraphics[ scale=0.32]{bilder/patches-per-mail.pdf}
 \end{figure}
 
 \begin{itemize}
-  \item Stark vom Kernel und Git selbst verwendet
+	\item Stark vom Kernel und Git selbst verwendet
 \end{itemize}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Remote Repositories / Remote Branches}
-  
+
 
 
 Remote Repositories verwalten:
 \begin{itemize}
-  \item \texttt{git remote -v}
-  \item \texttt{git remote add \emph{name} \emph{url}}
-  \item \texttt{git remote rm \emph{name}}
-  \item \texttt{git remote update}
+	\item \texttt{git remote -v}
+	\item \texttt{git remote add \emph{name} \emph{url}}
+	\item \texttt{git remote rm \emph{name}}
+	\item \texttt{git remote update}
 \begin{itemize}
-  \item Fragt bei allen Remote Repositories an, ob es neue Commits gibt. (Eigene Commits werden durch dieses Kommando \textbf{nicht} veröffentlicht!)
+	\item Fragt bei allen Remote Repositories an, ob es neue Commits gibt. (Eigene Commits werden durch dieses Kommando \textbf{nicht} veröffentlicht!)
 \end{itemize}
 \end{itemize}
 
 Details der Repositories ändern (z.\,B. Vertipper):
 \begin{itemize}
-  \item \texttt{\$EDITOR .git/config}
+	\item \texttt{\$EDITOR .git/config}
 \end{itemize}
 
 Remote Branches auflisten:
 \begin{itemize}
-  \item \texttt{git branch -r}
+	\item \texttt{git branch -r}
 \end{itemize}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Remote Branches vs. Remote Tracking Branches}
-  
+
 
 
 \includegraphics[width=\textwidth]{bilder/clone.pdf}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Fremden Code holen, eigenen versenden}
-  
+
 
 
 Aus einem anderen Repository neuen Code »ziehen«:
 \begin{itemize}
-  \item \texttt{git pull \emph{remote} \emph{branch}}
+	\item \texttt{git pull \emph{remote} \emph{branch}}
 \begin{itemize}
-  \item \texttt{git pull blessed master}
+	\item \texttt{git pull blessed master}
 \end{itemize}
 \end{itemize}
 Was hinter den Kulissen passiert:
 \begin{enumerate}
-  \item \texttt{git fetch \emph{remote} \emph{branch}}
-  \item \texttt{git merge \emph{remote}/\emph{branch}}
+	\item \texttt{git fetch \emph{remote} \emph{branch}}
+	\item \texttt{git merge \emph{remote}/\emph{branch}}
 \end{enumerate}
 
 
@@ -1145,24 +883,24 @@ Was hinter den Kulissen passiert:
 
 Eigene Commits »pushen« oder per E-Mail senden:
 \begin{itemize}
-  \item \texttt{git push \emph{remote} \emph{branch}}
-  \item \texttt{git format-patch \emph{seit-wann}}
+	\item \texttt{git push \emph{remote} \emph{branch}}
+	\item \texttt{git format-patch \emph{seit-wann}}
 \end{itemize}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Konventionen}
-  
+
 
 
 \begin{itemize}
-  \item Wiederholter Einsatz von \texttt{git pull} erzeugt viele unnötige Merges
-  \item Konvention:
+	\item Wiederholter Einsatz von \texttt{git pull} erzeugt viele unnötige Merges
+	\item Konvention:
 \begin{itemize}
-  \item Nicht im \texttt{master} entwickeln
-  \item \texttt{git remote update}, \texttt{master} \emph{immer} Fast-Forwarden
-  \item Eigene Branches per \texttt{merge} in \texttt{master} integrieren
+	\item Nicht im \texttt{master} entwickeln
+	\item \texttt{git remote update}, \texttt{master} \emph{immer} Fast-Forwarden
+	\item Eigene Branches per \texttt{merge} in \texttt{master} integrieren
 \end{itemize}
 \end{itemize}
 
@@ -1171,132 +909,109 @@ Eigene Commits »pushen« oder per E-Mail senden:
 \texttt{git config -{}-global alias.fm 'merge -{}-ff-only'}
 \end{block}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{GitHub -- „Social Coding“}
-  
+
 
 
 \begin{itemize}
-  \item GitHub stellt Git-Repositories zur Verfügung
+	\item GitHub stellt Git-Repositories zur Verfügung
 \begin{itemize}
-  \item Kostenlos und viel genutzt
-  \item Web-basiertes Interface
-  \item Aktionen „Fork“, „Follow“ und „Watch“
+	\item Kostenlos und viel genutzt
+	\item Web-basiertes Interface
+	\item Aktionen „Fork“, „Follow“ und „Watch“
 \end{itemize}
 \end{itemize}
 
 \begin{itemize}
-  \item Account erstellen:
+	\item Account erstellen:
 \begin{itemize}
-  \item $\rightarrow$ \texttt{http://www.github.com}
-  \item Authentifizierung per SSH-Schlüssel (ggf. erstellen)
+	\item $\rightarrow$ \texttt{http://www.github.com}
+	\item Authentifizierung per SSH-Schlüssel (ggf. erstellen)
 \end{itemize}
-\end{itemize}
-
-\begin{itemize}
-  \item Ein eigenes Repository hochladen:
-\begin{itemize}
-  \item Repository auf GitHub erstellen
-  \item \texttt{git remote add \emph{github}}\\\qquad{}\texttt{ssh://git@github.com:\emph{user}/\emph{projekt}.git}
-  \item \texttt{git push \emph{github} master}
-\end{itemize}
-\end{itemize}
-
-  
- \end{frame}
-\begin{frame}
- \frametitle{Let's develop!}
-  
-
-
-\begin{itemize}
-  \item Wir entwickeln in Plaintext -- Markdown macht's schön!
 \end{itemize}
 
 \begin{itemize}
-  \item Eine Hand voll Teams (5?)
-  \item Jedes Team wählt einen Koordinator
-  \item Koordinatoren arbeiten dem Maintainer zu
-  \item Entwickler: Tauscht euch aus! (Remotes, Patches, \ldots{})
-\end{itemize}
-
-  
- \end{frame}
-\begin{frame}
- \frametitle{Die Infrastruktur}
-  
-
-
-\begin{figure}
-\includegraphics[ scale=0.6]{infrastruktur-crop.pdf}
-\end{figure}
-
-  
- \end{frame}
-\begin{frame}
- \frametitle{Wir tauschen uns aus}
-  
-
-
+	\item Ein eigenes Repository hochladen:
 \begin{itemize}
-  \item Remote \emph{blessed} klonen (read-only):
-\begin{itemize}
-  \item \texttt{git clone -o blessed git://git.plenz.com/git-tips}
-  \item \texttt{cd git-tips}
+	\item Repository auf GitHub erstellen
+	\item \texttt{git remote add \emph{github}}\\\qquad{}\texttt{ssh://git@github.com:\emph{user}/\emph{projekt}.git}
+	\item \texttt{git push \emph{github} master}
 \end{itemize}
 \end{itemize}
+\end{frame}
 
-\vspace{.2cm}
+%\begin{frame}
+% \frametitle{Let's develop!}
+%\begin{itemize}
+%	\item Wir entwickeln in Plaintext -- Markdown macht's schön!
+%\end{itemize}
+%\begin{itemize}
+%	\item Eine Hand voll Teams (5?)
+%	\item Jedes Team wählt einen Koordinator
+%	\item Koordinatoren arbeiten dem Maintainer zu
+%	\item Entwickler: Tauscht euch aus! (Remotes, Patches, \ldots{})
+%\end{itemize}
+% \end{frame}
 
-\begin{itemize}
-  \item Schreibbares Repository eintragen: \emph{meins}
-\begin{itemize}
-  \item \parbox[t]{9cm}{\texttt{git remote add meins}\\\texttt{\hspace*{1cm}ssh://tn01@git.plenz.com:2222/repos/tn01}}
-\end{itemize}
-\end{itemize}
+%\begin{frame}
+% \frametitle{Die Infrastruktur}
+%\begin{figure}
+%\includegraphics[ scale=0.6]{infrastruktur-crop.pdf}
+%\end{figure}
+% \end{frame}
+%
+%\begin{frame}
+% \frametitle{Wir tauschen uns aus}
+%\begin{itemize}
+%	\item Remote \emph{blessed} klonen (read-only):
+%\begin{itemize}
+%	\item \texttt{git clone -o blessed \hspace*{.4cm} git@github.com:NiciDieNase/workshop-uebung.git}
+%	\item \texttt{cd workshop-uebung}
+%\end{itemize}
+%\end{itemize}
+%\vspace{.2cm}
+%\begin{itemize}
+%	\item Schreibbares Repository eintragen: \emph{meins}
+%\begin{itemize}
+%	\item \parbox[t]{9cm}{\texttt{git remote add meins}\\\texttt{\hspace*{.5cm}ssh://git@github.com:\textit{username}/workshop-uebung.git/}}
+%\end{itemize}
+%\end{itemize}
+%\vspace{.2cm}
+%\begin{itemize}
+%	\item Repository eines anderen Teilnehmers hinzufügen:
+%\begin{itemize}
+%	\item \texttt{git remote add \textit{username} \hspace*{.4cm} git://git@github.com:\textit{username}/workshop-uebung.git/}
+%\end{itemize}
+%\end{itemize}
+%\vspace{.2cm}
+%\begin{itemize}
+%	\item Schauen, »wie weit« die anderen sind:
+%\begin{itemize}
+%	\item \texttt{git remote update}
+%	\item \texttt{gitk -{}-all}
+%\end{itemize}
+%\end{itemize}
+%\end{frame}
 
-\vspace{.2cm}
-
-\begin{itemize}
-  \item Repository eines anderen Teilnehmers hinzufügen:
-\begin{itemize}
-  \item \texttt{git remote add tn02 git://git.plenz.com/tn02}
-\end{itemize}
-\end{itemize}
-
-\vspace{.2cm}
-
-\begin{itemize}
-  \item Schauen, »wie weit« die anderen sind:
-\begin{itemize}
-  \item \texttt{git remote update}
-  \item \texttt{gitk -{}-all}
-\end{itemize}
-\end{itemize}
-
-  
- \end{frame}
 \begin{frame}
  \frametitle{Kür: Was noch fehlt}
-  
-
-
 \begin{itemize}
-  \item Rebase
-  \item \texttt{git stash}
-  \item Remote Branches löschen
-  \item Git-Aliase
-  \item Tags
-  \item Reflog
+	\item Rebase
+	\item \texttt{git stash}
+	\item Remote Branches löschen
+	\item Git-Aliase
+	\item Tags
+	\item Reflog
 \end{itemize}
 
-  
+
  \end{frame}
 \begin{frame}
  \frametitle{Danke!}
-  
+
 
 
 Vielen Dank für eure Teilnahme!
@@ -1305,7 +1020,7 @@ Vielen Dank für eure Teilnahme!
 \vspace{0.5cm}
 
 
-Fragen und Feedback gerne per Mail:
+Fragen und Feedback gerne persönlich oder per Mail:
 
 
 \vspace{.2cm}
@@ -1315,9 +1030,68 @@ Fragen und Feedback gerne per Mail:
 mail@nicidienase.de
 \end{center}
 
-  
+
  \end{frame}
 
+\frame{Bonus-Folien}
+
+\begin{frame}
+ \frametitle{Rebase Interaktiv}
+\begin{itemize}
+	\item Das ist \emph{Advanced Git Magic} -- und will geübt sein!
+	\item Rebase-Prozess anhalten, Commits »mittendrin« ändern, weiterlaufen lassen
+\end{itemize}
+
+\begin{block}{Interaktives Rebase}
+\texttt{git rebase -i master \emph{topic}}
+\end{block}
+
+\begin{itemize}
+	\item Anwendungsfälle \emph{nur} lokal und für die \emph{eigenen} Commits
+\begin{itemize}
+	\item Patch-Serie neu strukturieren
+	\item Typos aus den eigenen Commits entfernen
+	\item Offensichtliche Fehler glattbügeln
+\end{itemize}
+\end{itemize}
+ \end{frame}
+
+\begin{frame}
+ \frametitle{Rebase Interaktiv: Beispiele}
+
+
+
+\begin{block}{Zwei Commits zusammenfassen}
+\texttt{git rebase -i HEAD\textasciitilde{}\emph{n}}\\
+$\rightarrow$ \texttt{pick} des zweiten Commits durch \texttt{fixup} ersetzen
+\end{block}
+
+\begin{itemize}
+	\item Einen Commit verschieben: Die Zeilen vertauschen
+	\item Einen Commit editieren: mit \texttt{edit} markieren
+	\item Einen Commit aufteilen: Siehe Cheatsheet
+\end{itemize}
+ \end{frame}
+
+\begin{frame}
+ \frametitle{Whitespace und EOL}
+
+\begin{itemize}
+	\item Was ist kaputter Whitespace?
+	\item \texttt{git diff -{}-check} (z.\,B. $\rightarrow$ Hook)
+\end{itemize}
+
+\begin{itemize}
+	\item \emph{Zeilenende:} Windows (CRLF) vs. UNIX (LF)
+	\item \texttt{core.eol} bestimmt, was zu tun ist: \texttt{lf}, \texttt{crlf} oder \texttt{native}
+	\item Git-Attribut \texttt{text} für Dateien, die automatisch konvertiert werden sollen
+\begin{itemize}
+	\item \texttt{echo '*.c text' > .gitattributes}
+\end{itemize}
+	\item \texttt{core.safecrlf}: Konvertierung verbieten, wenn ein Mix aus CRLF und LF vorhanden ist
+	\item Mehr Infos: \texttt{gitattributes(5)}
+\end{itemize}
+ \end{frame}
 
 \end{document}
 
