@@ -943,6 +943,27 @@ Eigene Commits »pushen« oder per E-Mail senden:
 \end{itemize}
 \end{frame}
 
+\begin{frame}
+\frametitle{HSKA und der Proxy}
+	\begin{itemize}
+	\item ssh LocalForward
+		\begin{itemize}
+			\item \texttt{ssh -L 9222:github.com:22 \$USER@login.hs-karlsruhe.de}
+			\item \texttt{git clone ssh://localhost:22/fsi-hska/git-workshop.git}
+		\end{itemize}
+	\item SSH-ProxyCommand
+		\begin{itemize}
+			\item CL: ssh -o ProxyCommand="ssh -W \%h:\%p mami1042@login.hs-karlsruhe.de" git@github.com
+			\item ssh-config: ProxyCommand ssh -W \%h:\%p mami1042@login.hs-karlsruhe.de
+		\end{itemize}
+	\item http.proxy in der git-config
+		\begin{itemize}
+			\item \texttt{git config --global http.proxy http://mami1042:PASSWORD@proxy.hs-karlsruhe.de:8888}
+		\end{itemize}
+	\item ssh-Tunnel mit tsocks oder sshuttle (linux-only)
+	\end{itemize}
+\end{frame}
+
 %\begin{frame}
 % \frametitle{Let's develop!}
 %\begin{itemize}
