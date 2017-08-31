@@ -31,71 +31,29 @@
 
 \begin{document}
 
-
-
-
-
 \input{cc_beamer.tex}
 \begin{frame}
 		\title{Git-Workshop}
-		\subtitle{Fachschaft Informatik, HS Karlsuhe}
-		\author{Felix Bürkle}
+		\author{Moritz Grimm}
 		\date{}
 		\titlepage
 		\begin{center}
-		\begin{tabular}[t]{lr}
-				\mbox{\CcGroupByNcSa{0.83}{0.95ex}}	&
-				\parbox[b]{7cm}{
-				{\tiny Veröffentlicht unter der CreativeCommons-Lizenz (By, Nc, Sa)}\\
-	{\tiny Basierend auf Material von Julius Plenz\\ \url{https://github.com/Feh/git-workshop}}} \\
-		\end{tabular}
-\end{center}
+			\CcGroupByNcSa{0.83}{0.95ex}\\
+			\vspace{0.4cm}
+			\tiny{Veröffentlicht unter der CreativeCommons-Lizenz (By, Nc, Sa)}\\
+			\vspace{0.2cm}
+			\tiny{Basierend auf Material von Valentin Haenel (\url{https://github.com/esc/git-workshop})}\\
+			\vspace{0.2cm}
+			\tiny{Mit Anpassungen von Julius Plenz (\url{https://github.com/Feh/git-workshop})}\\
+			\vspace{0.2cm}
+			\tiny{und Felix Bürkle (\url{https://github.com/NiciDieNase/git-workshop})}
+		\end{center}
 \end{frame}
 
 \begin{frame}
- \frametitle{Bevor wir beginnen \ldots}
-
-
-
-\begin{itemize}
-	\item Wer verwendet Linux? -- Windows? -- Mac?
-	\item Wer arbeitet gelegentlich auf der Shell?
-	\item Wer hat momentan noch \emph{kein} Git installiert?
-\end{itemize}
-
-\begin{itemize}
-	\item Wer kennt oder hat schon mal eines der folgenden Systeme benutzt?
-\begin{itemize}
-	\item CVS/RCS
-	\item SVN
-	\item Mercurial, Darcs, Perforce, Bazaar
-\end{itemize}
-\end{itemize}
-
-
- \end{frame}
-\begin{frame}
- \frametitle{Wer kennt Git?}
-
-
-
-Wer hat schonmal ...
-\begin{itemize}
-	\item \texttt{git} eingegeben
-	\item Ein Git-Repository selbst erstellt?
-	\item ... oder geklont?
-	\item Einen Commit gemacht?
-	\item Per Git mit anderen Leuten zusammengearbeitet?
-\end{itemize}
-
-
- \end{frame}
-\begin{frame}
  \frametitle{Der Plan}
 
-
-
-\begin{itemize}
+ \begin{itemize}
 	\item Grundlegende Arbeitsschritte in Git
 	\item Das Objektmodell -- eine theoretische Grundlage
 	\item Parallele Entwicklung: Branches und Merges
@@ -109,25 +67,13 @@ Wer hat schonmal ...
 \begin{frame}
  \frametitle{Motivation: Warum Versionskontrolle?}
 
-
-
-\begin{itemize}
+ \begin{itemize}
 	\item \textbf{Sicherheit:} Versionskontrolle schützt vor Verlusten
 	\item \textbf{Dokumentation:} Wer hat wann was gemacht?
 	\item \textbf{Fokussierung:} Entwicklung logisch gliedern
 	\item \textbf{Kollaboration:} Mit anderen Leuten an den gleichen Dateien arbeiten
 	\item \textbf{Partizipation:} Jeder kann mitmachen (GitHub etc.)
 \end{itemize}
-
-
- \end{frame}
-\begin{frame}
- \frametitle{Interface}
-
-
-
-\includegraphics[width=\textwidth]{bilder/shell-vs-gui.png}
-
 
  \end{frame}
 \begin{frame}
@@ -181,15 +127,55 @@ Wer hat schonmal ...
 
  \end{frame}
 \begin{frame}
- \frametitle{Begriffsbildung}
+ \frametitle{Begriffsbildung - Index}
 
 
 
 \begin{itemize}
 	\item \textbf{Index}/\textbf{Staging Area}: Bereich zwischen dem Arbeitsverzeichnis und dem Repository, in die Änderungen für den nächsten \textbf{Commit} gesammelt werden
+\end{itemize}
+
+
+ \end{frame}
+\begin{frame}
+ \frametitle{Begriffsbildung - Commit}
+
+
+
+\begin{itemize}
 	\item \textbf{Commit}: Eine Änderung an einer oder mehrerer Dateien, versehen mit Metadaten wie Autor, Datum und Beschreibung
+\end{itemize}
+
+
+ \end{frame}
+\begin{frame}
+ \frametitle{Begriffsbildung - Repository}
+
+
+
+\begin{itemize}
 	\item \textbf{Repository}: Eine Datenbank für Commits, dort wird die Versionsgeschichte aufgezeichnet
+\end{itemize}
+
+
+ \end{frame}
+\begin{frame}
+ \frametitle{Begriffsbildung - Referenz}
+
+
+
+\begin{itemize}
 	\item \textbf{Referenz}: Jeder \textbf{Commit} wird durch eine eindeutige SHA1-Summe identifiziert. Eine Referenz »zeigt« auf einen bestimmten Commit
+\end{itemize}
+
+
+ \end{frame}
+\begin{frame}
+ \frametitle{Begriffsbildung - Branch}
+
+
+
+\begin{itemize}
 	\item \textbf{Branch}: Ein »Zweig«, eine Abzweigung im Entwicklungszyklus, z.\,B. um ein neues Feature einzuführen.
 \end{itemize}
 
@@ -320,36 +306,33 @@ Relative Referenzen:
 
 
 \begin{itemize}
-	\item Den jüngsten Commit im vollen Umfang anschauen:
-\begin{itemize}
-	\item \texttt{git show}
-\end{itemize}
-\end{itemize}
 
-\begin{itemize}
-	\item Die gesamte Versionsgeschichte, die zum aktuellen Zustand führt, anzeigen:
-\begin{itemize}
-	\item \texttt{git log}
-\end{itemize}
-\end{itemize}
+	\item[] Den jüngsten Commit im vollen Umfang anschauen:
+	\begin{itemize}
+		\item \texttt{git show}
+	\end{itemize}
 
-\begin{itemize}
-	\item Was hat sich verändert?
-\begin{itemize}
-	\item \texttt{git diff}
-\end{itemize}
-\end{itemize}
+	\item[] Die gesamte Versionsgeschichte anzeigen:
+	\begin{itemize}
+		\item \texttt{git log}
+	\end{itemize}
 
-\begin{itemize}
-	\item Das Repository visualisieren:
-\begin{itemize}
-	\item \texttt{gitk}
-	\item \texttt{gitg}
-\end{itemize}
-	\item ... oder textbasiert:
-\begin{itemize}
-	\item \texttt{tig}
-\end{itemize}
+	\item[]  Was hat sich verändert?
+	\begin{itemize}
+		\item \texttt{git diff}
+	\end{itemize}
+
+	\item[] Das Repository visualisieren:
+	\begin{itemize}
+		\item \texttt{gitk}
+		\item \texttt{gitg}
+	\end{itemize}
+
+	\item[] ... oder textbasiert:
+	\begin{itemize}
+		\item \texttt{tig}
+	\end{itemize}
+
 \end{itemize}
 
 
@@ -911,58 +894,6 @@ Eigene Commits »pushen« oder per E-Mail senden:
 
 
  \end{frame}
-\begin{frame}
- \frametitle{GitHub -- „Social Coding“}
-
-
-
-\begin{itemize}
-	\item GitHub stellt Git-Repositories zur Verfügung
-\begin{itemize}
-	\item Kostenlos und viel genutzt
-	\item Web-basiertes Interface
-	\item Aktionen „Fork“, „Follow“ und „Watch“
-\end{itemize}
-\end{itemize}
-
-\begin{itemize}
-	\item Account erstellen:
-\begin{itemize}
-	\item $\rightarrow$ \texttt{http://www.github.com}
-	\item Authentifizierung per SSH-Schlüssel (ggf. erstellen)
-\end{itemize}
-\end{itemize}
-
-\begin{itemize}
-	\item Ein eigenes Repository hochladen:
-\begin{itemize}
-	\item Repository auf GitHub erstellen
-	\item \texttt{git remote add \emph{github}}\\\qquad{}\texttt{ssh://git@github.com:\emph{user}/\emph{projekt}.git}
-	\item \texttt{git push \emph{github} master}
-\end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}
-\frametitle{HSKA und der Proxy}
-	\begin{itemize}
-	\item ssh LocalForward
-		\begin{itemize}
-			\item \texttt{ssh -L 9222:github.com:22 \$USER@login.hs-karlsruhe.de}
-			\item \texttt{git clone ssh://localhost:22/fsi-hska/git-workshop.git}
-		\end{itemize}
-	\item SSH-ProxyCommand
-		\begin{itemize}
-			\item CL: ssh -o ProxyCommand="ssh -W \%h:\%p mami1042@login.hs-karlsruhe.de" git@github.com
-			\item ssh-config: ProxyCommand ssh -W \%h:\%p mami1042@login.hs-karlsruhe.de
-		\end{itemize}
-	\item http.proxy in der git-config
-		\begin{itemize}
-			\item \texttt{git config --global http.proxy http://mami1042:PASSWORD@proxy.hs-karlsruhe.de:8888}
-		\end{itemize}
-	\item ssh-Tunnel mit tsocks oder sshuttle (linux-only)
-	\end{itemize}
-\end{frame}
 
 %\begin{frame}
 % \frametitle{Let's develop!}
@@ -1027,29 +958,6 @@ Eigene Commits »pushen« oder per E-Mail senden:
 	\item Tags
 	\item Reflog
 \end{itemize}
-
-
- \end{frame}
-\begin{frame}
- \frametitle{Danke!}
-
-
-
-Vielen Dank für eure Teilnahme!
-
-
-\vspace{0.5cm}
-
-
-Fragen und Feedback gerne persönlich oder per Mail:
-
-
-\vspace{.2cm}
-
-
-\begin{center}
-mail@nicidienase.de
-\end{center}
 
 
  \end{frame}
