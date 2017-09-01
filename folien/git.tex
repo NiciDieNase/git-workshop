@@ -896,8 +896,29 @@ Eigene Commits »pushen« oder per E-Mail senden:
 \texttt{git config -{}-global alias.fm 'merge -{}-ff-only'}
 \end{block}
 
+\end{frame}
 
- \end{frame}
+\begin{frame}
+	\frametitle{Git Stash}
+	\begin{itemize}
+		\item{\texttt{git stash}\\ \small{\textit{Änderungen am working directory speichern, sodass dieses sauber ist}}}
+		\item{\texttt{git stash pop}\\ \small{\textit{Zuletzt gestashte Änderungen ins working directory laden}}}
+		\item{\texttt{git stash list}\\ \small{\textit{Alle gestashten Änderungen anzeigen - incl. deren Basiscommits}}}
+		\item{\texttt{git stash show}\\ \small{\textit{Menge der Änderungen zwischen stash und working directory zeigen}}}
+		\item{\texttt{git stash drop/clear}\\ \small{\textit{Den letzten/alle Einträge im stash löschen}}}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Remote Branches Löschen}
+	\begin{itemize}
+		\item{\texttt{git push origin --delete \$branch}}
+		\item{\texttt{git push origin :\$branch}}
+			\begin{block}{\small{Anders benannte Remotes beachten}}
+				\small{Wenn das Remote nicht origin heißt, muss der Name angepasst werden}
+			\end{block}
+	\end{itemize}
+\end{frame}
 
 %\begin{frame}
 % \frametitle{Let's develop!}
@@ -955,9 +976,6 @@ Eigene Commits »pushen« oder per E-Mail senden:
 \begin{frame}
  \frametitle{Kür: Was noch fehlt}
 \begin{itemize}
-	\item Rebase
-	\item \texttt{git stash}
-	\item Remote Branches löschen
 	\item Git-Aliase
 	\item Tags
 	\item Reflog
