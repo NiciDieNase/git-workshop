@@ -409,7 +409,7 @@ Idealisierter Workflow: Ein Branch pro neuem Feature oder Bugfix.
 
 
 
-Zwei Branches erstellen, und auf jedem einen Commit machen. Dann das
+Zwei Branches erstellen und auf jedem einen Commit machen. Dann das
 Resultat in \texttt{gitk} anschauen.
 
 \begin{itemize}
@@ -652,6 +652,7 @@ Fast-Forward Merge:
 Bei einem \texttt{merge} kann es zu Konflikten kommen. Wie geht man damit um?
 \begin{itemize}
 	\item \texttt{\$EDITOR \emph{konfliktdateien}}
+	\item[]{ oder \texttt{git mergetool} }
 	\item \texttt{git add \emph{konfliktdateien}}
 	\item \texttt{git commit -m "\emph{Merge-Konflikt behoben}"}
 \end{itemize}
@@ -664,14 +665,11 @@ Das Unterfangen abbrechen:
 	\item \texttt{git reset -{}-hard HEAD}
 \end{itemize}
 
-
- \end{frame}
+\end{frame}
 
 \begin{frame}
- \frametitle{Einen Commit ändern}
 
-
-
+	\frametitle{Den letzten Commit ändern}
 \begin{itemize}
 	\item Commit ändern = Neuen Commit erstellen, alten wegschmeißen
 	\item Den letzten Commit (\texttt{HEAD}) ändern:
