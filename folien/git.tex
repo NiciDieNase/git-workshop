@@ -740,13 +740,26 @@ Das Unterfangen abbrechen:
 	\item \textcolor{red}{\textbf{Wichtig:}} Man darf \textbf{\emph{niemals}} Commits aus einem bereits veröffentlichten Branch -- auf dem also womöglich Andere ihre Arbeit basieren -- durch \texttt{git rebase} verändern!
 	\item \textbf{Daher: Nur Unveröffentlichtes gegen Veröffentlichtes rebasen:}
 \begin{itemize}
-	\item \texttt{git rebase origin/master}
-	\item \texttt{git rebase v1.1.23}
+	\item \texttt{Auch ein Pull-request ist eine Art der Veröffentlichung}
+	\item \texttt{Den lokalen Branch auf den aktuellen Stand des remote Branches rebasen geht immer:\\ \textit{\textbf{git fetch}\\ \textbf{git rebase}}}
 \end{itemize}
 \end{itemize}
 
 \end{frame}
 
+\begin{frame}
+\frametitle{Vor- und Nachteile von Rebase}
+Nachteile:
+	\begin{itemize}
+		\item{komplexer - falsch benutzt kann ein rebase Probleme machen}
+		\item{Commits werden nachträglich verändert => Nicht klar wann Änderungen im upstream in einen Branch aufgenommen wurden (kaum relevant)}
+	\end{itemize}
+Vorteile:
+	\begin{itemize}
+		\item{History besser nachvollziehbar}
+		\item{Keine "{}überflüssigen"{} Merge-Commits}
+	\end{itemize}
+\end{frame}
 
 \begin{frame}
 \frametitle{Hinaus in die weite Welt!}
